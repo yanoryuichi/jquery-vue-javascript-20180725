@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+<div id="app">
+  <button @click="show = !show" :aria-expanded="show ? 'true' : 'false'">
+    Toggle Panel
+  </button>
+  <p v-if="show">hello</p>
+</div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script> -->
+<script src="vue.js"></script>
+<script>
+
+new Vue({
+  el: '#app',
+  data: {
+    show: true
+  }
+})
+
+</script>
+
+</body>
+</html>

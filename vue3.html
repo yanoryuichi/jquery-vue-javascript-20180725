@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+<style>
+.red {
+  color: red;
+}
+</style>
+
+<div id="app">
+  <!-- <button @click="active = !active" :aria-pressed="active ? 'true' : 'false'">Toggle me</button> -->
+  <!-- <button @click="active = !active">Toggle me</button> -->
+  <button @click="active = !active" :aria-pressed="active ? 'true' : 'false'">Toggle me</button>
+  <p :class="{ red: active }">Sometimes I need to be styled differently</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+<script>
+
+new Vue({
+  el: '#app',
+  data: {
+    active: false
+  }
+})
+</script>
+
+</body>
+</html>

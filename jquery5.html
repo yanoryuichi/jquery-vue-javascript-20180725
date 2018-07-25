@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+<div id="app">
+  <label for="textarea">What is your favorite kind of taco?</label>
+  <textarea id="textarea"></textarea>
+  <br>
+  <button class="button">Let us know!</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(function() {
+  var button = $('.button');
+  var textarea = $('#textarea');
+
+  button.hide();
+  textarea.keyup(function() {
+    if (textarea.val().length > 0) {
+      button.show();
+    } else {
+      button.hide();
+    }
+  })
+});
+
+
+</script>
+
+</body>
+</html>

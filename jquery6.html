@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+<div id="app">
+  <form action="/">
+    <div>
+      <label for="name">Name:</label><br>
+      <input id="name" type="text" name="name" required/>
+    </div>
+    <div>
+      <label for="email">Email:</label><br>
+      <input id="email" type="email" name="email"  required/>
+    </div>
+    <div>
+      <label for="caps">HOW DO I TURN OFF CAPS LOCK:</label><br>
+      <textarea id="caps" name="caps" required></textarea>
+    </div>
+    <button class="submit" type="submit">Submit</button>
+    <div>
+      <h3>Response from server:</h3>
+      <pre class="response"></pre>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(function() {
+  var button = $("button");
+  var name = $("input[name=name]");
+
+  name.keyup(function() {
+    if (name.val().length > 0) {
+      button.addClass('active');
+    } else {
+      button.removeClass('active');
+    }
+  });
+
+  $("form").submit(function(event) {
+    event.preventDefault();
+
+    //get the form data
+    var formData = {
+      name: $("input[name=name]").val(),
+      email: $("input[name=email]").val(),
+      caps: $("input[name=caps]").val()
+    };
+
+    // process the form
+    $.ajax({
+      type: "POST",
+      url: "//jsonplaceholder.typicode.com/posts",
+      data: formData,
+      dataType: "json",
+      encode: true
+    }).done(function(data) {
+      $(".response")
+        .empty()
+        .append(JSON.stringify(data, null, 2));
+    });
+  });
+});
+
+
+
+</script>
+
+</body>
+</html>
